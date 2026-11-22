@@ -35,11 +35,20 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+          cache: gradle
+          cache-dependency-path: android/gradle/wrapper/gradle-wrapper.properties
       - name: Build debug APK
         working-directory: android
-        run: ./gradlew :app:assembleDebug --stacktrace --no-daemon
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: |
+          set -euo pipefail
+          mkdir -p "$ANDROID_HOME/licenses"
+          # Standard Android SDK license hashes used by official cmdline-tools.
+          printf '%s\n' 24333f8a63b6825ea9c5514f21c17daf315c47af > "$ANDROID_HOME/licenses/android-sdk-license"
+          printf '%s\n' 84831b9409646161a1645d4434687ad2923b2c2 > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+          ./gradlew :app:assembleDebug --stacktrace --no-daemon
       - uses: actions/upload-artifact@v4
         if: success()
         with:
