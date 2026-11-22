@@ -1,0 +1,63 @@
+{
+  "version": "2026-11-22",
+  "note": "Name substrings and Bluetooth SIG company identifiers used as hints. A name match is not proof. Manufacturer 0x004C (Apple) and 0x0075 (Samsung) are official company IDs and also appear on phones; they are treated as a weak mixed signal unless the advertised name looks like a camera or a tracker.",
+  "camera_name_patterns": [
+    "wyze",
+    "reolink",
+    "eufy",
+    "tapo",
+    "hikvision",
+    "dahua",
+    "amcrest",
+    "foscam",
+    "ezviz",
+    "imou",
+    "arlo",
+    "blink",
+    "nest cam",
+    "nest-cam",
+    "ring cam",
+    "ring floodlight",
+    "ring spotlight",
+    "lorex",
+    "yi cam",
+    "ipcam",
+    "ip-cam",
+    "security cam",
+    "indoor cam",
+    "outdoor cam"
+  ],
+  "weak_camera_name_patterns": [
+    "camera",
+    "webcam",
+    "cam-",
+    "_cam"
+  ],
+  "tracker_name_patterns": [
+    "tile",
+    "airtag",
+    "smarttag",
+    "smart tag",
+    "chipolo",
+    "eufy tag",
+    "galaxy smarttag",
+    "item finder",
+    "tracker"
+  ],
+  "manufacturer_ids": [
+    {
+      "id": 76,
+      "hex": "0x004C",
+      "label": "Apple",
+      "kind": "mixed",
+      "note": "Phones, AirPods, AirTags, and Find My accessories share this company ID."
+    },
+    {
+      "id": 117,
+      "hex": "0x0075",
+      "label": "Samsung",
+      "kind": "mixed",
+      "note": "Includes phones and SmartTag trackers."
+    }
+  ]
+}

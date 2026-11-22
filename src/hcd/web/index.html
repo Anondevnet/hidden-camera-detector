@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#12100e" />
+  <title>Hidden Camera Detector</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Hidden Camera Detector</h1>
+      <p>Sweep a room you are staying in for lens glints and IR dots. Network and Bluetooth scans live in the CLI and Android app.</p>
+    </header>
+
+    <section class="consent" id="consent">
+      <h2>Use this only where you have a right to look</h2>
+      <p>This tool is for checking a space you are staying in or have been asked to inspect — an Airbnb bedroom, a hotel room, your own office. Do not scan other people’s networks, rooms, or devices.</p>
+      <ul>
+        <li>The live view stays on this phone unless you turn on “send frames to the server.”</li>
+        <li>The flashlight / torch works in some Android browsers and not in iOS Safari.</li>
+        <li>getUserMedia needs a secure context: HTTPS or localhost. If the camera is blocked on HTTP, start the server with <code>hcd serve --https --host 0.0.0.0</code> and accept the self-signed certificate warning.</li>
+      </ul>
+      <button id="agree" type="button">I understand, continue</button>
+    </section>
+
+    <section id="app" hidden>
+      <div class="stage">
+        <video id="video" playsinline autoplay muted></video>
+        <canvas id="overlay" class="overlay"></canvas>
+        <div class="badge" id="status">Camera idle</div>
+      </div>
+      <p class="hint" id="hint"></p>
+      <ul class="results" id="results"></ul>
+    </section>
+  </div>
+
+  <div class="dock" id="dock" hidden>
+    <div class="dock-inner">
+      <div class="mode" role="tablist" aria-label="Detection mode">
+        <button type="button" id="mode-glint" aria-pressed="true">Lens glint</button>
+        <button type="button" id="mode-ir" aria-pressed="false">IR dots</button>
+      </div>
+      <div class="row">
+        <button type="button" id="start">Start camera</button>
+        <button type="button" id="torch" class="secondary" disabled>Torch</button>
+      </div>
+      <div class="row">
+        <label class="btn secondary">Upload photo<input type="file" id="upload-image" accept="image/*" /></label>
+        <label class="btn secondary">Upload video<input type="file" id="upload-video" accept="video/*" /></label>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="use-server" />
+        Send frames to the server instead of detecting in the browser
+      </label>
+    </div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

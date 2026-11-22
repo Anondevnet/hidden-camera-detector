@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hidden Camera Detector</string>
+    <string name="consent_title">Only scan spaces you are allowed to check</string>
+    <string name="consent_body">Use this app in a rental you are staying in, a hotel room, or your own home or office. Do not scan other people’s networks, rooms, or devices. A high score is a hint, not proof, and a clear scan does not mean a space is free of cameras.</string>
+</resources>
